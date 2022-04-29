@@ -1,0 +1,87 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/logo.ejs") %>
+    <div id="container">
+        <div id="title">
+            <p>FORMULARZ SZCZEGOLOWY</p>
+        </div>
+        <p>Wybierz odpowiednie parametry:</p>
+        <form method="POST" action="/extended">
+            <div>
+                <div class="formElement">
+                    <label for="carType">Typ pojazdu: </label>
+                    <select name="carType" id="carType" required>
+                        <% for(let i=1; i<=carTypes.length;i++) { %>
+                            <option value=<%= i %>><%= carTypes[i-1]%></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="formElement">
+                    <label for="carBrand">Marka pojazdu: </label>
+                    <select name="carBrand" id="carBrand" required>
+                        <% for(let i=1; i<=carBrands.length;i++) { %>
+                            <option value=<%= i %>><%= carBrands[i-1]%></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="formElement">
+                    Rodzaj paliwa: <br/>
+                    <input type="radio" value="benzyna" name="gasType" checked/>
+                    <label for="benzyna" name="gasType">Benzyna </label> <br />
+
+                    <input type="radio" value="diesel" name="gasType" />
+                    <label for="diesel" name="gasType">Diesel </label><br />
+
+                    <input type="radio" value="gaz" name="gasType" />
+                    <label for="gaz" name="gasType">Gaz </label> 
+                </div>
+                <div class="formElement">
+                    Typ ubezpieczenia:<br/>
+                    <input type="radio" value="oc" name="insType" checked/> 
+                    <label for="oc" name="insType">OC </label><br />
+
+                    <input type="radio" value="ac" name="insType"/> 
+                    <label for="ac" name="insType">AC </label><br />
+
+                    <input type="radio" value="assistance" name="insType"/> 
+                    <label for="assistance" name="insType">ASSISTANCE </label><br />
+
+                    <input type="radio" value="nnw" name="insType"/>
+                    <label for="nnw" name="insType">NNW </label>
+                </div>
+                <div class="formElement">
+                    <label for="name">Imie: </label>
+                    <input type="text" id="name" name="name" required/>
+
+                    <label style="margin-left: 5px" for="surname">Nazwisko: </label>
+                    <input type="text" id="surname" name="surname" required/><br/>
+                </div>
+                <div class="formElement">
+                    <label for="engineVolume">Pojemnosc silnika [l]: </label>
+                    <input type="number" id="engineVolume" name="engVol" min="0" step="0.1" required/><br/>
+
+                    <label for="doors">Liczba drzwi: </label>
+                    <input type="number" id="doors" name="doors" min="2" required/><br/>
+
+                    <label for="prodDate">Data produkcji:</label>
+                    <input type="date" id="prodDate" name="prodDate" required/><br/>
+
+                    <label for="registDate">Data rejestracji:</label>
+                    <input type="date" id="registDate" name="registDate" required /><br/>
+
+                    <label for="age">Wiek kierowcy:</label>
+                    <input type="number" id="age" name="age" min="16" required/><br/>
+                </div>
+            </div>
+            <div id="submitDiv">
+                <input type="submit" value="Wyslij dane" />
+            </div>
+        </form>
+        <div id="extendedForm">
+            <a href="/">Strona Glowna</a>
+        </div>
+    </div>
+</body>
+
+</html>

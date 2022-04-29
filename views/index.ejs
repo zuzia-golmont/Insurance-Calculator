@@ -1,0 +1,62 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/logo.ejs") %>
+    <div id="container">
+        <img class="picture" src="/blueCar.png" />
+        <p>Wybierz odpowiednie parametry:</p>
+        <form method="POST" action="/">
+            <div>
+                <div class="formElement">
+                    <label for="carType">Typ pojazdu: </label>
+                    <select name="carType" id="carType" required>
+                        <% for(let i=1; i<=carTypes.length;i++) { %>
+                            <option value=<%= i %>><%= carTypes[i-1]%></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="formElement">
+                    <label for="carBrand">Marka pojazdu: </label>
+                    <select name="carBrand" id="carBrand" required>
+                        <% for(let i=1; i<=carBrands.length;i++) { %>
+                            <option value=<%= i %>><%= carBrands[i-1]%></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class="formElement">
+                    <label for="prodDate">Data produkcji:</label>
+                    <input type="date" id="prodDate" name="prodDate" required/><br/>
+
+                    <label for="registDate">Data rejestracji:</label>
+                    <input type="date" id="registDate" name="registDate" required /><br/>
+
+                    <label for="age">Wiek kierowcy:</label>
+                    <input type="number" id="age" name="age" min="16" required/><br/>
+                </div>
+            </div>
+            <div id="additionalInfo">
+                <% for(let i=0;i<3;i++) { %>
+                    <textarea name="info<%=i%>" id="info<%=i%>" placeholder="Tu wpisz dodatkowe informacje"></textarea>
+                <% } %>
+            </div>
+            <div id="submitDiv">
+                <input type="submit" value="Wyslij dane" />
+            </div>
+        </form>
+        <div id="result">
+            <p>Wartosc ubezpieczenia:</p>
+            <div id="resultBlock">
+                <div>
+                    <% if(insurance !== 0) { %>
+                        <%= insurance %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div id="extendedForm">
+            <a href="/extended">Szczegolowy formularz</a>
+        </div>
+    </div>
+</body>
+
+</html>
